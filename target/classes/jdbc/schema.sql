@@ -1,0 +1,1 @@
+create table Ttable (ID INT primary key UNIQUE, VALUE VARCHAR(155));
