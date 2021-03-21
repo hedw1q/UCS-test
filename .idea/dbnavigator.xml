@@ -26,13 +26,13 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="b99dec3f-45b3-4164-b262-4993d3ebf45d">
-        <schema name="UNAME" object-types="index, table, function, procedure, column, view, constraint" />
+        <schema name="UNAME" object-types="table, view, constraint, function, index, procedure, column" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="b99dec3f-45b3-4164-b262-4993d3ebf45d">
-      <console name="Console SQL" type="STANDARD" schema="UNAME" session="Main"><![CDATA[select * from ttable]]></console>
+      <console name="Console SQL" type="STANDARD" schema="UNAME" session="Main">select * from ttable</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

@@ -28,7 +28,7 @@
     </jdbc:initialize-database>
 
     <bean id="dao"
-          class="ru.hedw1q.dao.DAO">
+          class="ru.hedw1q.dao.DAOImpl">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 

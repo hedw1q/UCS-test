@@ -1,24 +1,18 @@
 package ru.hedw1q.controller;
 
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-//import ru.hedw1q.dao.DAO;
-import ru.hedw1q.dao.DAO;
-import ru.hedw1q.model.Employee;
+import ru.hedw1q.dao.DAOImpl;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
+import java.util.LinkedHashMap;
 import java.util.Map;
+
+//import ru.hedw1q.dao.DAO;
 
 /**
  * @author hedw1q
@@ -28,19 +22,22 @@ import java.util.Map;
 public class DefaultController {
 
     @Autowired
-    private DAO dao;
+    private DAOImpl daoImpl;
 
-
-//    @GetMapping(value = "/",produces = MediaType.APPLICATION_JSON_VALUE)
-//    public Employee sayHello() {
-//        Employee employee=new Employee(1,"NAEM","SURNAME");
-//        return employee;
-//    }
-//TODO: Сделать вид как требуется, строка в XML, ответ в HHTTP
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Map<String,Object>> test() {
-        List<Map<String,Object>> list=dao.getJSONEntry(1);
-        System.out.println(list.get(0));
-        return list;
+    //TODO: Сделать вид как требуется, строка в XML, ответ в HHTTP
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, Object> test(@PathVariable int id) {
+        String response = "ok";
+        Map<String, Object> DBEntry = new HashMap<String, Object>();
+        try {
+            DBEntry = daoImpl.getJSONEntry(id);
+        } catch (DataRetrievalFailureException dataRetrievalFailureException) {
+            response = "FAIL: " + dataRetrievalFailureException.getLocalizedMessage();
+        }
+        Map<String, Object> dataResponse = new LinkedHashMap<String, Object>();
+        dataResponse.put("data", DBEntry);
+        dataResponse.put("response", response);
+        dataResponse.put("request", id);
+        return dataResponse;
     }
 }

@@ -1,1 +1,1 @@
-select * from ttable
+DROP TABLE IF EXISTS Ttable;

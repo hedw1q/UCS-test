@@ -1,8 +1,4 @@
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.hedw1q.dao.DAO;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author hedw1q
