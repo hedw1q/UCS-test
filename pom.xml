@@ -27,6 +27,41 @@
                     <artifactId>maven-clean-plugin</artifactId>
                     <version>2.6.1</version>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>2.0</version>
+                    <executions>
+                        <execution>
+                            <id>tomcat-run</id>
+                            <goals>
+                                <goal>exec-war-only</goal>
+                            </goals>
+                            <phase>package</phase>
+                            <configuration>
+                                <path>/</path>
+                                <enableNaming>false</enableNaming>
+                                <finalName>webapp.jar</finalName>
+                                <charset>utf-8</charset>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.7</version>
+                    <executions>
+                        <execution>
+                            <id>deploy-executable</id>
+                            <goals>
+                                <goal>deploy-file</goal>
+                            </goals>
+                            <configuration>
+                                <file>target/UCS-test-project.war</file>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
@@ -83,6 +118,13 @@
             <groupId>org.apache.derby</groupId>
             <artifactId>derbyclient</artifactId>
             <version>10.10.2.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
