@@ -29,6 +29,8 @@
 ## Пример работы 
 Сервис возвращает строку с данными в виде JSON, data-строка из БД с заданным ID, response-ok если успех , причина сбоя если ошибка, request-запрашиваемый ID 
 
+Для работы сервиса требуется Apache Derby Network Server, запуск сервера осуществляется путем запуска bat-файла {apache-derby}/bin/startNetworkServer.bat
+
 - Тестовые данные в БД
 
 ![image](https://sun9-19.userapi.com/impg/Z3-rn-6GvqTt_t554rYEqnWBPnc_JQzVajj4Vw/k5hqsqxk51M.jpg?size=176x102&quality=96&sign=82b93bb17dded9a4a474e4278c2f8cca&type=album)
