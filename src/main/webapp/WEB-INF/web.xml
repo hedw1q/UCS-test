@@ -6,14 +6,16 @@
 
     <display-name>ucs-test-app</display-name>
 
-    <absolute-ordering/>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/context.xml</param-value>
+            <param-value>/WEB-INF/applicationContext.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -23,20 +25,10 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <company>
-        <staff id="1001">
-            <firstname>yong</firstname>
-            <lastname>mook kim</lastname>
-            <nickname>mkyong</nickname>
-            <salary>100000</salary>
-        </staff>
-        <staff id="2001">
-            <firstname>low</firstname>
-            <lastname>yin fong</lastname>
-            <nickname>fong fong</nickname>
-            <salary>200000</salary>
-        </staff>
-    </company>
+    <context-param>
+        <param-name>Query</param-name>
+        <param-value>SELECT * FROM Ttable WHERE id=?</param-value>
+    </context-param>
 
     <named-query name="Ttable.findRowByID">
         <query>SELECT * FROM Ttable WHERE id=?</query>

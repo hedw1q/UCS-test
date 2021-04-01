@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.hedw1q.dao.DAO;
 
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -33,7 +34,6 @@ public class DefaultController {
             response = "FAIL: " + dataRetrievalFailureException.getLocalizedMessage();
             dataRetrievalFailureException.printStackTrace();
         }
-
         Map<String, Object> JSONResponse = new LinkedHashMap<String, Object>();
         JSONResponse.put("data", dataEntry);
         JSONResponse.put("response", response);
